@@ -39,8 +39,8 @@ pipeline {
                     sh"""
                         #/var/jenkins_home/google-cloud-sdk/bin/gcloud components install kubectl
                         /var/jenkins_home/google-cloud-sdk/bin/gcloud container clusters get-credentials ${cluster} --zone ${zone} --project ${project_id}
-                        kubectl apply -f nodejs.yml -p version="test_latest"
-                        kubectl apply -f hpa.yml
+                        /var/jenkins_home/google-cloud-sdk/bin/kubectl apply -f nodejs.yml -p version="test_latest"
+                        /var/jenkins_home/google-cloud-sdk/bin/kubectl apply -f hpa.yml
                     """
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
                 script{
                 sh"""
                 pod_name=\$(kubectl get pods -o=name | grep ${environment} | awk -F'/' '{print \$2}')
-                kubectl expose pod \$pod_name --type=LoadBalancer --port=${port} --target-port=8080
+                /var/jenkins_home/google-cloud-sdk/bin/kubectl expose pod \$pod_name --type=LoadBalancer --port=${port} --target-port=8080
                 """
                 }
             }
