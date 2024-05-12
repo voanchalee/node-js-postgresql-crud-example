@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs
+  labels:
+    app: nodejs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+      - name: nodejs
+        image: "anchaleev/nodeNdb:${version}"
+        ports:
+        - containerPort: 8080
+      hostAliases:
+        - hostnames:
+          - postgresql
+          - ip: "34.30.100.220"
+
+parameters:
+  - name: version
+    displayName: name
+    description: blah blah
+    required: true
+    value: latest
+          
