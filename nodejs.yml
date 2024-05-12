@@ -19,16 +19,5 @@ spec:
         image: "anchaleev/nodendb:test_latest"
         ports:
         - containerPort: 8080
-      hostAliases:
-      - ip: "34.30.100.220"
-        hostnames:
-        - postgresql
-          
 
-# parameters:
-#   - name: version
-#     displayName: name
-#     description: blah blah
-#     required: true
-#     value: latest
           
