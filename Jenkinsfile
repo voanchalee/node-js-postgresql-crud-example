@@ -22,11 +22,11 @@ pipeline {
                 script{
                     withCredentials([usernamePassword(credentialsId: "dockerhub", usernameVariable: "USERNAME", passwordVariable: "PASSWORD")]){
                         sh"""
-                        git switch ${branch}
+                        git checkout ${branch}
                         git status
-                        ls -la
-                        docker build -t anchaleev/nodeNdb:${version} .
-                        docker push anchaleev/nodeNdb:${version}
+                        #ls -la
+                        #docker build -t anchaleev/nodendb:${version} .
+                        #docker push anchaleev/nodendb:${version}
                         """
                     }
                 }
@@ -37,7 +37,7 @@ pipeline {
                 script{
                     sh"""
                         /var/jenkins_home/google-cloud-sdk/bin/gcloud container clusters get-credentials ${cluster} --zone ${zone} --project ${project_id}
-                        kubectl apply -f nodejs.yml
+                        kubectl apply -f nodejs.yml -p version="test_latest"
                         kubectl apply -f hpa.yml
                     """
                 }
