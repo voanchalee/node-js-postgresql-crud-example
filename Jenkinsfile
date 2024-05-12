@@ -8,6 +8,7 @@ pipeline {
                     cluster = "example-cluster"
                     zone = "us-central1-a"
                     branch = "${JOB_BASE_NAME}"
+                    
                     if ("${branch}" == "master"){
                         port = '3000'
                     } else{
