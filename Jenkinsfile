@@ -7,8 +7,7 @@ pipeline {
                     project_id = "helpful-girder-423003-n6"
                     cluster = "example-cluster"
                     zone = "us-central1-a"
-                    branch = "${JOB_BASE_NAME}"
-                    
+                    branch = "${JOB_BASE_NAME}"                    
                     if ("${branch}" == "master"){
                         port = '3000'
                     } else{
