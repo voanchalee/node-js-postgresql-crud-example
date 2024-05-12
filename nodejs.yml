@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nodejs
-        image: "anchaleev/nodendb:test_latest"
+        image: "anchaleev/nodendb:image_version"
         ports:
         - containerPort: 8080
       hostAliases:
