@@ -37,6 +37,7 @@ pipeline {
             steps {
                 script{
                     sh"""
+                    
                         #/var/jenkins_home/google-cloud-sdk/bin/gcloud components install kubectl
                         /var/jenkins_home/google-cloud-sdk/bin/gcloud container clusters get-credentials ${cluster} --zone ${zone} --project ${project_id}
                         /var/jenkins_home/google-cloud-sdk/bin/kubectl get ns
