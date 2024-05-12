@@ -16,18 +16,19 @@ spec:
     spec:
       containers:
       - name: nodejs
-        image: "anchaleev/nodendb:test_latest"
+        image: "anchaleev/nodendb:${version}"
         ports:
         - containerPort: 8080
       hostAliases:
-        - hostnames:
+        - ip: "34.30.100.220"
+          hostnames:
           - postgresql
-          - ip: "34.30.100.220"
+          
 
-parameters:
-  - name: version
-    displayName: name
-    description: blah blah
-    required: true
-    value: latest
+# parameters:
+#   - name: version
+#     displayName: name
+#     description: blah blah
+#     required: true
+#     value: latest
           
