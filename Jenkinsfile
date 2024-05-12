@@ -39,7 +39,7 @@ pipeline {
                     sh"""
                         #/var/jenkins_home/google-cloud-sdk/bin/gcloud components install kubectl
                         /var/jenkins_home/google-cloud-sdk/bin/gcloud container clusters get-credentials ${cluster} --zone ${zone} --project ${project_id}
-                        /var/jenkins_home/google-cloud-sdk/bin/kubectl apply -f nodejs.yml -p version="test_latest"
+                        /var/jenkins_home/google-cloud-sdk/bin/kubectl apply -f nodejs.yml
                         /var/jenkins_home/google-cloud-sdk/bin/kubectl apply -f hpa.yml
                     """
                 }
